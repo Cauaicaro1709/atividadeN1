@@ -1,0 +1,136 @@
+/* Estilos gerais */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Classe para ocultar elementos */
+.hidden {
+  display: none;
+}
+
+/* Estilo dos cards dos quizzes */
+.quiz-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.quiz-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.quiz-card h5 {
+  padding: 15px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Estilo do container do quiz */
+.quiz-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Estilo das perguntas e opções */
+#quiz-questions p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.form-check-label {
+  font-size: 16px;
+  color: #555;
+  margin-left: 5px;
+}
+
+/* Estilo dos botões */
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo do resultado do quiz */
+#quiz-result {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 20px;
+}
+
+/* Estilo do campo de busca */
+.search-bar input {
+  border-radius: 20px;
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* Estilo do botão "Criar Quiz" */
+#createQuizButton {
+  background-color: #1E88E5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+#createQuizButton:hover {
+  background-color: #1565C0;
+}
+
+#createQuizButton i {
+  margin-right: 8px;
+}
