@@ -1,0 +1,117 @@
+<%- include('./partials/header') %>
+  <!-- Menu de Navegação -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Quiz Educativo</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="homeLink"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="exploreLink"><i class="fas fa-search"></i> Explorar</a>
+          </li>
+        </ul>
+        <div class="search-bar me-3">
+          <input type="text" class="form-control" id="searchInput" placeholder="Buscar">
+        </div>
+        <!-- Botão para criar quiz -->
+        <button class="btn btn-outline-primary" id="createQuizButton">
+          <i class="fas fa-plus"></i> Criar Quiz
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Formulário para criar quiz (inicialmente oculto) -->
+  <div class="container mt-4 hidden" id="createQuizForm">
+    <h2>Criar Novo Quiz</h2>
+    <form id="quizForm">
+      <div class="mb-3">
+        <label for="quizCategory" class="form-label">Categoria</label>
+        <input type="text" class="form-control" id="quizCategory" placeholder="Ex: Geografia" required>
+      </div>
+      <div class="mb-3">
+        <label for="quizQuestion" class="form-label">Pergunta</label>
+        <input type="text" class="form-control" id="quizQuestion" placeholder="Ex: Qual é a capital da França?" required>
+      </div>
+      <div class="mb-3">
+        <label for="quizOptions" class="form-label">Opções (separadas por vírgula)</label>
+        <input type="text" class="form-control" id="quizOptions" placeholder="Ex: Paris, Londres, Madri, Roma" required>
+      </div>
+      <div class="mb-3">
+        <label for="quizAnswer" class="form-label">Resposta Correta</label>
+        <input type="text" class="form-control" id="quizAnswer" placeholder="Ex: Paris" required>
+      </div>
+      <div class="mb-3">
+        <label for="quizImage" class="form-label">URL da Imagem</label>
+        <input type="text" class="form-control" id="quizImage" placeholder="Ex: https://exemplo.com/imagem.jpg" required>
+      </div>
+      <button type="submit" class="btn btn-success">Adicionar Quiz</button>
+    </form>
+  </div>
+  <!-- Cards dos Quizzes -->
+  <div class="container mt-4" id="quiz-list">
+    <h2>Em destaque</h2>
+    <div class="row mt-3">
+      <!-- Quiz de Geografia -->
+      <div class="col-md-4 mb-3">
+        <div class="quiz-card" onclick="startQuiz('geografia')">
+          <img src="https://institucional.upis.br/blog/wp-content/uploads/2019/05/geografia-o-que-e-estuda-saiba-toda-historia.jpg" alt="geografia.jpg">
+          <h5 class="mt-2">Quiz de Geografia</h5>
+        </div>
+      </div>
+      <!-- Quiz de História -->
+      <div class="col-md-4 mb-3">
+        <div class="quiz-card" onclick="startQuiz('historia')">
+          <img src="https://www.souzaaranhamachado.com.br/wp-content/uploads/2022/03/Hist%C3%B3ria.jpg" alt="História.jpg">
+          <h5 class="mt-2">Quiz de História</h5>
+        </div>
+      </div>
+      <!-- Quiz de Matemática -->
+      <div class="col-md-4 mb-3">
+        <div class="quiz-card" onclick="startQuiz('matematica')">
+          <img src="https://turdanews.net/wp-content/uploads/2025/02/matematica.jpg" alt="matematica.jpg">
+          <h5 class="mt-2">Quiz de Matemática</h5>
+        </div>
+      </div>
+      <!-- Quiz de Português -->
+      <div class="col-md-4 mb-3">
+        <div class="quiz-card" onclick="startQuiz('portugues')">
+          <img src="https://editoraunesp.com.br/blog/icone/dia-mundial-da-lingua-portuguesa-momento-para-se-aperfeicoar-no-idioma" alt="portugues.jpg">
+          <h5 class="mt-2">Quiz de Português</h5>
+        </div>
+      </div>
+      <!-- Quiz de Ciências -->
+      <div class="col-md-4 mb-3">
+        <div class="quiz-card" onclick="startQuiz('ciencias')">
+          <img src="https://mtciencias.com.br/wp-content/uploads/2020/06/WhatsApp-Image-2020-06-09-at-15.01.39.jpeg" alt="ciencia.jpg">
+          <h5 class="mt-2">Quiz de Ciências</h5>
+        </div>
+      </div>
+      <!-- Quiz de Inglês -->
+      <div class="col-md-4 mb-3">
+        <div class="quiz-card" onclick="startQuiz('ingles')">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7f0N-PwlWNcUo8qj02VcA5r4VHqNA0655MQ&s" alt="ingles.jpg">
+          <h5 class="mt-2">Quiz de Inglês</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Container do Quiz -->
+  <div class="container mt-4 quiz-container hidden" id="quiz-container">
+    <h2 id="quiz-title"></h2>
+    <div id="quiz-questions"></div>
+    <!-- Botões inicialmente ocultos -->
+    <button class="btn btn-success mt-3 hidden" id="checkAnswersButton" onclick="checkAnswers()">Verificar Respostas</button>
+    <p id="quiz-result" class="mt-3"></p>
+    <button class="btn btn-primary mt-3 hidden" id="goBackButton" onclick="goBack()">Voltar</button>
+  </div>
+
+
+<%- include('./partials/footer') %>
