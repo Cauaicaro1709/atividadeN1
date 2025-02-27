@@ -51,46 +51,96 @@ document.getElementById("createQuizButton").addEventListener("click", function (
 });
 
 // Função para adicionar um novo quiz
+// Function to add a new quiz
 document.getElementById("quizForm").addEventListener("submit", function (e) {
-  e.preventDefault(); // Evita o recarregamento da página
+  e.preventDefault(); // Prevent page reload
 
-  // Captura os valores do formulário
+  // Capture form values
   const category = document.getElementById("quizCategory").value.toLowerCase();
   const question = document.getElementById("quizQuestion").value;
   const options = document.getElementById("quizOptions").value.split(",").map(opt => opt.trim());
   const answer = document.getElementById("quizAnswer").value;
-  const imageUrl = document.getElementById("quizImage").value; // Captura a URL da imagem
+  const imageUrl = document.getElementById("quizImage").value; // Capture image URL
 
-  // Adiciona o novo quiz ao array de quizzes
+  // Add new quiz to local state
   if (!quizzes[category]) {
-    quizzes[category] = []; // Cria a categoria se não existir
+    quizzes[category] = []; // Create category if it doesn't exist
   }
-  quizzes[category].push({
+  const newQuiz = {
+    categoria: category,
     pergunta: question,
     opcoes: options,
     resposta: answer,
-    imagem: imageUrl // Adiciona a URL da imagem ao objeto do quiz
-  });
+    imagem: imageUrl
+  };
+  quizzes[category].push(newQuiz); // Add to the specific category
 
-  // Limpa o formulário
+  // Send the new quiz to the server
+  fetch('/api/quizzes', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newQuiz)
+  })
+  .then(response => {
+    if (response.ok) {
+      alert("Quiz added successfully!");
+
+      // Fetch quizzes again to update the UI (Optional, or update UI directly)
+      fetchQuizzes();
+    } else {
+      alert("Error adding quiz");
+    }
+  })
+  .catch(error => console.error('Error adding quiz:', error));
+
+  // Reset form and hide it after submission
   document.getElementById("quizForm").reset();
-  document.getElementById("createQuizForm").classList.add("hidden"); // Oculta o formulário após o envio
+  document.getElementById("createQuizForm").classList.add("hidden"); // Hide the form
 
-  // Adiciona o novo card ao final da lista de cards
+  // Dynamically add the new quiz card to the UI (local update)
   const quizCardsContainer = document.querySelector("#quiz-list .row");
   const newQuizCard = document.createElement("div");
   newQuizCard.classList.add("col-md-4", "mb-3");
   newQuizCard.innerHTML = `
     <div class="quiz-card" onclick="startQuiz('${category}')">
-      <img src="${imageUrl}" alt="${category}" onerror="this.src='https://via.placeholder.com/150'">
+      <img src="${imageUrl || 'https://via.placeholder.com/150'}" alt="${category}" onerror="this.src='https://via.placeholder.com/150'">
       <h5 class="mt-2">${question}</h5>
     </div>
   `;
   quizCardsContainer.appendChild(newQuizCard);
-
-  // Exibe uma mensagem de sucesso
-  alert("Quiz adicionado com sucesso!");
 });
+
+// Function to fetch and display quizzes
+function fetchQuizzes() {
+  fetch('/api/quizzes')
+    .then(response => response.json())
+    .then(data => {
+      const quizCardsContainer = document.querySelector("#quiz-list .row");
+
+      // Clear existing cards
+      quizCardsContainer.innerHTML = '';
+
+      // Loop through quizzes and create a card for each
+      data.forEach(quiz => {
+        const newQuizCard = document.createElement("div");
+        newQuizCard.classList.add("col-md-4", "mb-3");
+        newQuizCard.innerHTML = `
+          <div class="quiz-card" onclick="startQuiz('${quiz.categoria}')">
+            <img src="${quiz.imagem || 'https://via.placeholder.com/150'}" alt="${quiz.categoria}" onerror="this.src='https://via.placeholder.com/150'">
+            <h5 class="mt-2">${quiz.pergunta}</h5>
+          </div>
+        `;
+        quizCardsContainer.appendChild(newQuizCard);
+      });
+    })
+    .catch(error => console.error('Error fetching quizzes:', error));
+}
+
+// Initial fetch when page loads
+fetchQuizzes();
+
 // Função para iniciar o quiz
 function startQuiz(materia) {
   // Oculta a lista de quizzes
