@@ -1,0 +1,172 @@
+/* Estilos gerais */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #ffffff;
+}
+
+/* Classe para ocultar elementos */
+.hidden {
+  display: none;
+}
+/* Estilo do container dos quizzes */
+/* Estilo do container dos quizzes */
+#quiz-list {
+  background-color: #f8f9fa; /* Cor de fundo cinza claro */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 10px; /* Bordas arredondadas */
+  margin-top: 20px; /* Espaçamento acima do container */
+}
+
+/* Estilo dos cards dos quizzes */
+.quiz-card {
+  background-color: #ffffff; /* Fundo branco */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  transition: transform 0.2s, box-shadow 0.2s; /* Transição suave */
+  overflow: hidden; /* Esconde conteúdo que ultrapassa o card */
+  cursor: pointer; /* Cursor de pointer ao passar o mouse */
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.quiz-card:hover {
+  transform: translateY(-5px); /* Efeito de levantar ao passar o mouse */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte ao passar o mouse */
+}
+
+.quiz-card img {
+  width: 100%; /* Largura total do card */
+  height: 150px; /* Altura fixa para as imagens */
+  object-fit: cover; /* Garante que a imagem cubra o espaço */
+}
+
+.quiz-card h5 {
+  padding: 15px; /* Espaçamento interno */
+  margin: 0; /* Remove margem padrão */
+  font-size: 18px; /* Tamanho da fonte */
+  font-weight: 700; /* Fonte em negrito */
+  color: #333; /* Cor do texto */
+  text-align: center; /* Centraliza o texto */
+}
+
+/* Estilo do container do quiz */
+.quiz-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Estilo das perguntas e opções */
+#quiz-questions p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.form-check-label {
+  font-size: 16px;
+  color: #555;
+  margin-left: 5px;
+}
+
+/* Estilo dos botões */
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo do resultado do quiz */
+#quiz-result {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 20px;
+}
+
+/* Estilo do campo de busca */
+.search-bar input {
+  border-radius: 20px;
+  padding: 8px 15px;
+  border: 1px solid rgb(255, 255, 255);
+  font-size: 14px;
+}
+
+/* Estilo do botão "Criar Quiz" */
+#createQuizButton {
+  background-color:#000000;
+  color: rgb(247, 240, 240);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+#createQuizButton:hover {
+  background-color: #ffcc00;
+}
+
+#createQuizButton i {
+  margin-right: 8px;
+}
+.navbar {
+  background-color: #359aff; /* Cor de fundo da navbar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.navbar-brand {
+  color: rgb(17, 0, 0) !important; /* Cor do texto do brand */
+  font-weight: 700; /* Peso da fonte */
+  font-size: 24px; /* Tamanho da fonte */
+}
+
+.navbar-nav .nav-link {
+  color: rgb(31, 3, 3) !important; /* Cor dos links */
+  font-weight: 500; /* Peso da fonte dos links */
+  margin-right: 15px; /* Espaçamento entre os links */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffcc00 !important; /* Cor dos links ao passar o mouse */
+}
+
+.search-bar input {
+  border-radius: 20px;
+  padding: 8px 15px;
+  border: 1px solid #ccc; /* Borda do campo de busca */
+  font-size: 14px;
+}
